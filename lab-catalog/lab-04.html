@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ЛР-04</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body class="body">
+	<header class="header">
+		<h3 class="main-title">Функціональне програмування</h3>
+	</header>
+
+<div class="dropup">
+<div class="dropbtn"></div>
+<div class="dropbtn"></div>
+<div class="dropbtn"></div>
+  <div class="dropup-content">
+  	<a href="index.html">Головна</a>
+    <a href="lab-01.html">ЛР-01</a>
+    <a href="lab-02.html">ЛР-02</a>
+    <a href="lab-03.html">ЛР-03</a>
+    <a href="lab-04.html">ЛР-04</a>
+    <a href="lab-05.html">ЛР-05</a>
+    <a href="lab-06.html">ЛР-06</a>
+    <a href="lab-07.html">ЛР-07</a>
+    <a href="lab-08.html">ЛР-08</a>
+  </div>
+
+<div class="main-page">
+	<h1 class="lab-01"><b>Лабораторна робота №4</b></h1>
+	
+
+	<div class="ssilki"> 
+	<p> <li><a href="#theme">Тема</a></li></p>
+	<p> <li><a href="#meta">Мета</a> </li></p>
+	<p><li><a href="#tasks">Завдання</a></li></p>
+	<p><li><a href="#structure">Опис алгоритму для завдання</a></li></p>
+	<p><li><a href="#flow-chart">Структура програми</a></li></p>
+	<p><li><a href="#language">Обгрунтування вибору середовища та мови</a></li></p>
+	<p><li><a href="#code">Код програми</a></li></p>
+	<p><li><a href="#screen">Скріншоти результатів</a></li></p>
+	<p><li><a href="#conclusions">Висновки</a></li></p>
+
+    </div>
+	<p id="theme" class="theme">
+	<b>Тема:</b>
+	Програмування списків мовами функціонального програмування
+
+	</p>	
+
+	<p id="meta" class="meta">
+	<b>Мета:</b>
+	Опанувати теоретичні основи використання списків функціональними мовами та розробити програми обробки списків</p>	
+	<div><b>Варіант:</b>
+	11</div>
+	<div id="tasks" class="tasks">
+	<p><b>Завдання:</b></p>
+	<p><b>11.1.</b>Створити список досконалих натуральних чисел, задавши максимальне значення числа (10000). Досконале число – це натуральне число, яке дорівнює сумі всіх своїх дільників. Вивести створений список. Виконати такі операції:<br>
+a)	Визначити елементи списку, які є факторіалами чисел, та підрахувати їх кількість;<br>
+b)	Видалити елементи списку, які є факторіалом числа;<br>
+c)	Знайти елементи, остання цифра яких дорівнює n (задається користувачем).
+</p>
+	
+	<p><b>11.2</b>Написати код, що моделює процес обслуговування пасажирів маршрутками. Пасажири утворюють список, їх ідентифікація за порядковими номерами. У маршрутку можуть увійти k людей. На маршруті m машин. Машини прибувають на зупинки кожні n хвилин. Черга пасажирів зменшується на k людей, коли прибуває маршрутка, але протягом чекання наступної машини збільшується на p<=k людей. Вивести на екран сценарій обслуговування пасажирів маршрутками. Визначити, скільки людей перевезуть m маршруток за r циклів роботи</p>
+	</div>	
+
+	<div id="structure" class="structure">
+		<p class="struct-title"><b>Опис алгоритму для завдання 11.1:   </b>
+		<p><p>1. Створюємо функцію, яка рахує суму дільників числа<br>
+		2. Створюємо функцію my-list, в яку передаємо в якості аргумента функцію get-list 10000<br>
+		3. Виводимо рехультат роботи функції my-list на екран<br>
+		4. Створюємо функцію, яка визначає елементи в списку, які є факторіалами числа та підраховує їх кількість<br>
+		5. Виводимо результуючий список на екран<br>
+		6. Створюємо функцію, яка видаляє елементи списку, які не є факторіалами чисел<br>
+		7. Виводимо на екран новий список без факторіалів<br>
+		8. Створюємо функцію, яка знаходить елементи, остання цифра яких = введеному користувачем числу<br>
+		9. Виводимо результат на екран<br>
+		</p> 
+		</p>             
+		
+<p class="struct-title"><b>Опис алгоритму  для завдання 11.2:</b>
+		<p>1. Задаємо початкові значення для:<br>
+			* кількості людей, які входять в маршрутку <b>(k)</b>;<br>
+			* кількості нових людей, які приходять на зупинку <b>(p)</b>;<br>
+			* кількості маршруток <b>(m)</b>;<br>
+			* часу між двома маршрутками <b>(n)</b>;<br>
+			* кількості циклів <b>(r)</b>;<br>
+		2. Задаємо початкову кількість людей на зупинці <br>
+		3. Втановлюємо початкову кількість перевезених людей = 0<br>
+		4. Створюємо функцію run, яка запускає процес перевезення пасажирів маршрутками згідно заданих вхідних даних<br>
+		5. В кожному із заданих циклів виводимо на екран кількість людей, які поїхали на кожній маршрутці та кількість людей на зупинці в кінці циклу<br>
+		6. Виводимо на екран сумарну кількість перевезених людей<br>
+		</p> 
+		</p>
+</div>
+<! -- --> <div id="flow-chart" class="flow-chart">
+		<p><b>Структура програми (HIPPO діаграма):</b></p>
+		<p>Task 11.1</p>
+		<img src="HIPPO-Lab04(11.1).jpg">
+		<br>
+		<p>Task 11.2</p>
+		<img src="HIPPO-Lab04(11.2).jpg">
+	</div>
+	
+	<div id="language" class="language">
+		<p>
+			<b>Обгрунтування вибору середовища та мови</b>
+			<p>В якості середовища було обрано DrRacket версії 8.2 та мова Racket</p>
+			<p>Вибір середовища та мови був зумовлений наступним:
+			<li>DrRacket та мова Racket  мають хорошу документацію <a href="https://docs.racket-lang.org/" target="_blank">https://docs.racket-lang.org</a></li>
+			<li>дане середовище та мова були рекомендовані викладачем</li>
+  			</p>
+		</p>
+	</div>
+	<div>
+		 <p><b>Код програми:</b></p>
+		 <div id="code" class="code">
+		 	#lang racket<br>
+
+
+(display "\n#Lab-04 Victoria Rimchuk, IPZ-43")<br>
+(newline)<br>
+(newline)<br>
+<br>
+;#Task 11.1<br>
+<br>
+; Функція, яка рахує суму дільників числа<br>
+(define (f1 num)<br>
+  (define (inner sum temp)<br>
+    (if (< temp num)<br>
+        (inner (if (= (modulo num temp) 0)<br>
+                   (+ sum temp)<br>
+                   sum)<br>
+               (+ temp 1))<br>
+        sum))<br>
+  (inner 0 1))<br>
+<br>
+(define (get-list n)<br>
+  (define (inner temp)<br>
+    (if (<= temp n)<br>
+        (append (if (= (f1 temp) temp)<br>
+                    (list temp)<br>
+                    '())<br>
+                (inner (+ 1 temp)))<br>
+        '()))<br>
+  (inner 1))<br>
+<br>
+(display "#Task 11.1")<br>
+(newline)<br>
+(display "Список досконалих чисел, які < 10000:\n")<br>
+(define my-list (get-list 10000))<br>
+(display my-list) (newline) (newline)<br>
+<br>
+;a) Визначити елементи списку, які є факторіалами чисел, та підрахувати їх кількість<br>
+<br>
+(define (factorial? x)<br>
+  (define (inner sum count)<br>
+    (if (> sum x)<br>
+        #f<br>
+        (if (= sum x)<br>
+            #t<br>
+            (inner (* sum count) (+ 1 count)))))<br>
+  (inner 1 2))<br>
+<br>
+(define (task-1.a arr count)<br>
+  (if (not (null? arr))<br>
+      (if (factorial? (car arr))<br>
+          (begin<br>
+            (display (car arr))<br>
+            (display " - факторіал\n")<br>
+            (task-1.a (cdr arr) (+ count 1)))<br>
+          (begin<br>
+            (display (car arr))<br>
+            (display " - НЕ факторіал\n")<br>
+            (task-1.a (cdr arr) count)))<br>
+      (begin<br>
+        (display "Кількість факторіалів в списку: ")<br>
+        (display count)<br>
+        (newline))))<br>
+<br>
+(task-1.a my-list 0)<br>
+<br>
+; b) Видалити елементи списку, які є факторіалом числа;<br>
+<br>
+(define (delete-factorial arr)<br>
+  (if (not (null? arr))<br>
+      (append (if (factorial? (car arr))<br>
+                  '()<br>
+                  (list (car arr)))<br>
+              (delete-factorial (cdr arr)))<br>
+      '()))<br>
+<br>
+(define new-list (delete-factorial my-list)) ; новий список без факторіалів<br>
+<br>
+(display "\nСписок без факторіалів:\n")<br>
+(display new-list) (newline)<br>
+<br>
+; c) Знайти елементи, остання цифра яких дорівнює n (задається користувачем).<br>
+<br>
+(define (task-1.c arr x)<br>
+  (if (not (null? arr))<br>
+      (begin<br>
+        (if (= (modulo (car arr) 10) x)<br>
+            (begin<br>
+              (display (car arr))<br>
+              (newline)))<br>
+        (task-1.c (cdr arr) x))))<br>
+<br>
+(newline)<br>
+(define x (read))<br>
+
+(display "\nEлементи, остання цифра яких дорівнює ")<br>
+(display x) (newline)<br>
+(task-1.c new-list x) (newline)<br>
+<br>
+<br>
+;#Task 11.2<br>
+
+<br>
+(define k 4) ; кількість, людей які входять в маршрутку<br>
+(define p 2) ; кількість нових людей, які приходять на зупинку<br>
+(define m 5) ; кількість маршруток<br>
+(define n 10) ; час між двома маршрутками<br>
+(define r 3) ; кількість циклів<br>
+<br>
+(define count 25) ; початкова кількість людей на зупинці<br>
+(define total 0) ; кількість перевезених людей<br>
+<br>
+(display "#Task 11.2")<br>
+(newline)<br>
+<br>
+(define (run)<br>
+  (define (inner-2 mt)<br>
+    (if (and (<= mt m)<br>
+             (> count 0))<br>
+        (let ((kt (if (< (+ p count) k) (+ p count) k)))<br>
+          (set! count (+ (- count kt) p))<br>
+          (set! total (+ kt total))<br>
+          (display "Кількість людей, які поїхали на маршрутці №")<br>
+          (display mt)<br>
+          (display ": ")<br>
+          (display kt)<br>
+          (newline)<br>
+          (inner-2 (+ 1 mt)))<br>
+        (begin<br>
+          (display "Кількість людей на зупинці в кінці циклу: ")<br>
+          (display count))))<br>
+  (define (inner-1 rt)<br>
+    (if (and (<= rt r)<br>
+             (> count 0))<br>
+        (begin<br>
+          (display "\n---------------Цикл ")<br>
+          (display rt)<br>
+          (display "---------------\n")<br>
+          (inner-2 1)<br>
+          (inner-1 (+ rt 1)))<br>
+        (begin<br>
+          (display "\n++++++++++++++++++++++++++++++++++++++\n")<br>
+          (display "Сумарна кількість перевезених людей: ")<br>
+          (display total)<br>
+          (newline))))<br>
+  (inner-1 1))<br>
+
+(run)
+	</div>
+	<div id="screen" class="screen">
+		<p><b>Скріншот результатів:</b></p>
+		<img src="lab-04-result(11.1).jpg"><br>
+		<img src="lab-04-result(11.2).jpg">
+	</div>
+	<div><p><b>Аналіз достовірності результатів:</b></p>
+		<p>11.1 Для перевірки достовірності отриманих результатів (перевірки того, чи є число факторіалом) було використоно онлайн калькулятор, результати перевірки представлені нижче:<br>
+		<img src="lab-04-analiz1.jpg"><br>
+		<img src="lab-04-analiz2.jpg"><br>
+		<img src="lab-04-analiz3.jpg"><br>
+		<img src="lab-04-analiz4.jpg"><br>
+		<img src="lab-04-analiz5.jpg"><br>
+		<img src="lab-04-analiz6.jpg"><br>	
+		<p>В результаті аналізу достовірності було встановлено, що із списку досконалих чисел, які менші 10000 факторіалом є лише число <b>6</b><br>
+		Число <b>28</b> не є факторіалом, оскільки для числа 4 факторіал =24, а для числа 5 - 120.<br>
+		Число <b>496</b> не є факторіалом, оскільки для числа 5 факторіал =120, а для числа 6 - 720.<br>
+		Число <b>8128</b> не є факторіалом, оскільки для числа 7 факторіал =5040, а для числа 8 - 40320.<br> </p>
+		</p>
+		<p>11.2 Для даного завдання, перевірку на достовірність було проведено за допомогою візуальної оцінки списку після кожної дій над ним. На мою думку, дане завдання не потребує додаткових перевірок на достовірність.
+		</p>
+		
+	</div>
+	<div id="conclusions" class="conclusions">
+	<p><b>Висновки:</b></p>
+	<p>В ході виконання даної лабораторної роботи було опановано теоретичні основи використання списків функціональними мовами та розроблено  програми для обробки списків
+	</p>
+</div>
+</div>
+</body>
+</html>

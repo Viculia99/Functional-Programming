@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ЛР-07</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body class="body">
+	<header class="header">
+		<h3 class="main-title">Функціональне програмування</h3>
+	</header>
+
+<div class="dropup">
+<div class="dropbtn"></div>
+<div class="dropbtn"></div>
+<div class="dropbtn"></div>
+  <div class="dropup-content">
+  	<a href="index.html">Головна</a>
+    <a href="lab-01.html">ЛР-01</a>
+    <a href="lab-02.html">ЛР-02</a>
+    <a href="lab-03.html">ЛР-03</a>
+    <a href="lab-04.html">ЛР-04</a>
+    <a href="lab-05.html">ЛР-05</a>
+    <a href="lab-06.html">ЛР-06</a>
+    <a href="lab-07.html">ЛР-07</a>
+    <a href="lab-08.html">ЛР-08</a>
+  </div>
+
+<div class="main-page">
+	<h1 class="lab-01"><b>Лабораторна робота №7</b></h1>
+	
+	<div class="ssilki"> 
+	<p> <li><a href="#theme">Тема</a></li></p>
+	<p> <li><a href="#meta">Мета</a> </li></p>
+	<p><li><a href="#tasks">Завдання</a></li></p>
+	<p><li><a href="#structure">Опис алгоритму для завдання</a></li></p>
+	<p><li><a href="#flow-chart">Структура програми</a></li></p>
+	<p><li><a href="#language">Обгрунтування вибору середовища та мови</a></li></p>
+	<p><li><a href="#code">Код програми</a></li></p>
+	<p><li><a href="#screen">Скріншоти результатів</a></li></p>
+	<p><li><a href="#conclusions">Висновки</a></li></p>
+
+    </div>
+	<p id= "theme" class="theme">
+	<b>Тема:</b>
+	Обробка рядків та файлів 
+	мовами функціонального програмування
+	</p>	
+
+	<p id= "meta" class="meta">
+	<b>Мета:</b>
+	Опанувати теоретичні основи обробки рядків та текстових файлів мовами функціонального програмування та розробити програми їх реалізації </p>	
+	<div><b>Варіант:</b>
+	11</div>
+	<div id= "tasks" class="tasks">
+	<p><b>Завдання:</b></p>
+	<p>Записати в текстовий файл n рядків тексту, що задаються програмою на функціональній мові програмування. Зчитати рядки із створеного програмою файлу, вивести їх на екран. Видалити в початковому тексті рядок, згідно до заданого словника. Записати в новий текстовий файл результат обробки тексту</p>
+	
+	</div>	
+
+	<div id= "structure" class="structure">
+		<p class="struct-title"><b>Опис алгоритму для завдання:   </b>
+		<p><p>1. Створюємо функцію для запису даних у файл<br>
+		2. Створюємо функцію для читання нових рядків із файла<br>
+		3. Записуємо дані у файл<br>
+		4. Читаємо дані з файла<br>
+		5. Видаляємо рядок із файла згідно заданого шаблону<br>
+		6. Записуємо модифіковані дані у новий файл
+		</p> 
+		</p>             
+</div>
+<! -- --> <div id= "flow-chart" class="flow-chart">
+		<p><b>Структура програми (HIPPO діаграма):</b></p>
+		<img src="HIPPO-Lab-07.jpg">
+	</div>
+	
+	<div id= "language" class="language">
+		<p>
+			<b>Обгрунтування вибору середовища та мови</b>
+			<p>В якості середовища було обрано DrRacket версії 8.2 та мова Racket</p>
+			<p>Вибір середовища та мови був зумовлений наступним:
+			<li>DrRacket та мова Racket  мають хорошу документацію <a href="https://docs.racket-lang.org/" target="_blank">https://docs.racket-lang.org</a></li>
+			<li>дане середовище та мова були рекомендовані викладачем</li>
+  			</p>
+		</p>
+	</div>
+	<div>
+		 <p><b>Код програми:</b></p>
+		 <div id= "code" class="code">
+#lang racket<br>
+
+; Запис даних у файл<br>
+(define (writeDataToFile data file) (display-lines-to-file data file #:exists 'replace #:mode 'text))<br>
+; Читання нових рядкв з файла<br>
+(define (nextLine file)<br>
+(let ((line (read-line file 'any)))<br>
+(if (eof-object? line)<br>
+'()<br>
+(begin(displayln line)<br>
+(append (list line) (nextLine file)))<br>
+)<br>
+)<br>
+)<br>
+<br>
+(define path "D:\\IPZ-43\\Funstional-prog\\Racket-scripts\\")<br>
+(define words (list<br>
+"My text for seventh lab"<br>
+"String for removing"<br> 
+"The last string in file"<br>
+)<br>
+)<br>
+(display "#Lab-07 Victoria Rimchuk IPZ-43")<br>
+<br>
+; Запис даних<br>
+(writeDataToFile words ( string-append path "input.txt"))<br>
+(display "\nВміст файлу:\n")<br>
+; Читання даних<br>
+(define readData (call-with-input-file ( string-append path<br> "input.txt") nextLine))<br>
+<br>
+; Видалення із файлу за заданим шаблоном<br>
+(define removeData(<br>
+remove "String for removing" (list<br>
+"My text for seventh lab"<br>
+"String for removing" <br>
+"The last string in file"<br>
+)))<br>
+<br>
+; Запис модифікованих даних в новий файл, та виведення їх на екран<br>
+(writeDataToFile removeData (string-append path "output.txt"))<br>
+(display "\nДані з початкового файлу були успішно змінені та записані у новий файл!")<br>
+(newline)<br>
+(display "\nВміст нового файлу: ")<br>
+(newline)<br>
+(define rm-data (call-with-input-file ( string-append path "output.txt")<br> nextLine))<br>
+
+
+
+	</div>
+	<div id= "screen" class="screen">
+		<p><b>Скріншот результатів:</b></p>
+		<img src="lab-07-results.jpg">
+	</div>
+	<div><p><b>Аналіз достовірності результатів:</b></p>
+		<p> Для даного завдання перевірку на достовірність було проведено за допомогою візуальної оцінки вмісту файлів. На мою думку, дане завдання не потребує додаткових перевірок на достовірність.
+		</p>
+				
+	</div>
+	<div id= "conclusions" class="conclusions">
+	<p><b>Висновки:</b></p>
+	<p>В ході виконання даної лабораторної роботи було опановано  теоретичні основи обробки рядків та текстових файлів мовами функціонального програмування та реалізовано програму базуючись на опанованих теоретичних основах<br>
+	<p>В ході виконання даної лабораторної роботи виникли проблеми з реалізацією словника для видалення з файлу. Виходячи з цього, було реалізовано видалення з файлу рядка за вкааним шаблоном</p> 
+	</p>
+</div>
+</div>
+</body>
+</html>

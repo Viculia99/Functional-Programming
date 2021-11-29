@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ЛР-08</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body class="body">
+	<header class="header">
+		<h3 class="main-title">Функціональне програмування</h3>
+	</header>
+
+<div class="dropup">
+<div class="dropbtn"></div>
+<div class="dropbtn"></div>
+<div class="dropbtn"></div>
+  <div class="dropup-content">
+  	<a href="index.html">Головна</a>
+    <a href="lab-01.html">ЛР-01</a>
+    <a href="lab-02.html">ЛР-02</a>
+    <a href="lab-03.html">ЛР-03</a>
+    <a href="lab-04.html">ЛР-04</a>
+    <a href="lab-05.html">ЛР-05</a>
+    <a href="lab-06.html">ЛР-06</a>
+    <a href="lab-07.html">ЛР-07</a>
+    <a href="lab-08.html">ЛР-08</a>
+  </div>
+
+<div class="main-page">
+	<h1 class="lab-01"><b>Лабораторна робота №8</b></h1>
+	
+
+	<div class="ssilki"> 
+	<p> <li><a href="#theme">Тема</a></li></p>
+	<p> <li><a href="#meta">Мета</a> </li></p>
+	<p><li><a href="#tasks">Завдання</a></li></p>
+	<p><li><a href="#structure">Опис алгоритму для завдання</a></li></p>
+	<p><li><a href="#flow-chart">Структура програми</a></li></p>
+	<p><li><a href="#language">Обгрунтування вибору середовища та мови</a></li></p>
+	<p><li><a href="#code">Код програми</a></li></p>
+	<p><li><a href="#screen">Скріншоти результатів</a></li></p>
+	<p><li><a href="#conclusions">Висновки</a></li></p>
+
+    </div>
+
+	<p id="theme" class="theme">
+	<b>Тема:</b> 
+	Символьні обчислення мовами функціонального програмування.
+	Операції з многочленами
+
+
+	</p>	
+
+	<p  id="meta" class="meta">
+	<b>Мета:</b>
+	Опанувати теоретичні основи символьних обчислень мовами функціонального програмування. Розробити програми символьного диференціювання та реалізації арифметики поліномів </p>	
+	<div><b>Варіант:</b>
+	11</div>
+	<div id="tasks" class="tasks">
+	<p><b>Завдання:</b></p>
+	<p>Написати програму символьного диференціювання по одній змінній поліному, який заданий списком своїх коефіцієнтів та степенем у вигляді: . Знайти першу, другу та третю похідні. Результати вивести у вигляді символьного виразу. Значення поліному та його похідних при заданому користувачем значенні змінної не обчислювати. </p>
+	
+	</div>	
+
+	<div id="structure" class="structure">
+		<p class="struct-title"><b>Опис алгоритму для завдання:   </b>
+		<p><p>1. Створюємо функцію для обчислення похідної<br>
+		2. Створюємо функцію для виведення поліному на екран<br>
+		3. Створюємо функцію polinomial, в яку передаємо список коефіцієнтів<br>
+		4. Обчислюємо першу похідну початкового рівняння<br>
+		5. Обчислюємо другу похідну<br>
+		6. Обчислюємо третю похідну<br>
+		7. Виводимо результати на екран<br>
+		</p> 
+		</p>             
+</div>
+<! -- --> <div id="flow-chart" class="flow-chart">
+		<p><b>Структура програми (HIPPO діаграма):</b></p>
+		<img src="HIPPO-Lab08.jpg">
+	</div>
+	
+	<div id="language" class="language">
+		<p>
+			<b>Обгрунтування вибору середовища та мови</b>
+			<p>В якості середовища було обрано DrRacket версії 8.2 та мова Racket</p>
+			<p>Вибір середовища та мови був зумовлений наступним:
+			<li>DrRacket та мова Racket  мають хорошу документацію <a href="https://docs.racket-lang.org/" target="_blank">https://docs.racket-lang.org</a></li>
+			<li>дане середовище та мова були рекомендовані викладачем</li>
+  			</p>
+		</p>
+	</div>
+	<div>
+		 <p><b>Код програми:</b></p>
+		 <div id="code" class="code">
+		(display "\n#Lab-08 Victoria Rimchuk, IPZ-43")<br>
+(newline)<br>
+(newline)<br>
+<br>
+; функція для обчислення похідної<br>
+(define (deriv pol)<br>
+  (if (not (null? (cdr pol)))<br>
+      (append (list (* (car pol)<br>
+                       (- (length pol) 1))) ; формула похідної x^n = n * x^(n-1)<br>
+              (deriv (cdr pol)))<br>
+      '()))<br>
+<br>
+; функція для виводу поліному на екран<br>
+(define (print-pol pol)<br>
+  (if (not (null? pol))<br>
+      (if (not (= (car pol) 0))<br>
+          (begin<br>
+            (display "(")<br>
+            (display (car pol))<br>
+            (display "*x^")<br>
+            (display (- (length pol) 1))<br>
+            (display ")")<br>
+            (if (not (null? (cdr pol)))<br>
+                (begin<br>
+                  (display (if (not (= (cadr pol) 0))" + " ""))<br>
+                  (print-pol (cdr pol)))<br>
+                (newline))))))<br>
+<br>
+(define polynomial (list 8 -4 6 3 -2 7))<br>
+<br>
+(define d1 (deriv polynomial))<br><br>
+(define d2 (deriv d1))<br>
+(define d3 (deriv d2))<br>
+<br>
+(display "Початкове рівняння:\n")<br>
+(print-pol polynomial)<br>
+<br>
+(display "Перша похідна:\n")<br>
+(print-pol d1)<br>
+<br>
+(display "Друга похідна:\n")<br>
+(print-pol d2)<br>
+<br>
+(display "Третя похідна:\n")<br>
+(print-pol d3)<br>
+
+	</div>
+	<div id="screen" class="screen">
+		<p><b>Скріншот результатів:</b></p>
+		<img src="lab-08-results.jpg">
+	</div>
+	<div><p><b>Аналіз достовірності результатів:</b></p>
+		<p> Для перевірки достовірності отриманих результатів (знаходження похідних заданого поліному) було використано онлайн калькулятор.
+		Результати знаходження похідних, отримані за допомогою онлайн калькулятора представлені нижче:
+		<img src="lab-08-analiz.jpg">
+				
+		<p>Проаналізувавши отримані результати можна зробити висновок, що результати, отримані за допомогою реалізованих функцій та результати, отримані за допомогою онлайн калькулятора співпали.
+		</p>
+				
+	</div>
+	<div id="conclusions" class="conclusions">
+	<p><b>Висновки:</b></p>
+	<p>В ході виконання даної лабораторної роботи було опановано теоретичні основи символьних обчислень мовами функціонального програмування.Реалізовано програму символьного диференціювання поліному <br> 
+	</p>
+</div>
+</div>
+</body>
+</html>
